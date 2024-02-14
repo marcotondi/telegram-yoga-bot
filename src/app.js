@@ -76,7 +76,7 @@ bot.on("callback_query", async (ctx) => {
 });
 
 bot.on("photo", async (ctx) => {
-  if (ctx.chat.id === config.adminId) {
+  if (ctx.chat.id == config.adminId) {
     // Ottieni l'ID file dell'immagine
     const shortUid = uuidv4().substring(0, 8);
     const fileId = ctx.message.photo[0].file_id;
