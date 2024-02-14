@@ -1,0 +1,24 @@
+{
+  "name": "telegram-yoga-bot",
+  "version": "1.0.0",
+  "private": true,
+  "description": "is a bot games for a Iyengar Yoga Asanas",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "telgram",
+    "bot",
+    "telegraf"
+  ],
+  "author": "Marco Tondi",
+  "license": "GPL-3.0",
+  "dependencies": {
+    "fs": "^0.0.1-security",
+    "path": "^0.12.7",
+    "pino": "^8.18.0",
+    "telegraf": "^4.15.3",
+    "uuid": "^9.0.1"
+  }
+}

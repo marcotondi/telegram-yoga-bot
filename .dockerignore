@@ -1,0 +1,46 @@
+# Ignora i file di configurazione locali
+.env
+.env.local
+.env.development
+.env.production
+
+# Ignora i file di log
+logs/*
+
+# Ignora i file di test
+test/*
+storage/*
+
+# Ignora i file temporanei
+tmp/*
+
+# Ignora i file node_modules
+node_modules/
+
+# Ignora i file di copertura del codice
+coverage/*
+
+# Ignora i file di debug
+*.log
+*.pid
+
+# Ignora i file di snapshot
+.nyc_output/*
+
+# Ignora i file di documentazione
+docs/*
+
+# Ignora i file di esempio
+examples/*
+
+# Ignora i file di configurazione del IDE
+.vscode/*
+
+# Ignora qualsiasi file che termina con .tmp
+*.tmp
+
+# Ignora qualsiasi file che termina con .swp
+*.swp
+
+# Ignora qualsiasi file che termina con ~
+*~
