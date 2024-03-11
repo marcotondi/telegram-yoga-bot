@@ -55,6 +55,7 @@ function registerAsana(msg) {
     asanaId: msg.shortUid,
     fileId: msg.fileId,
     name: msg.name,
+    count: 0,
   };
 
   // Aggiungi l'utente all'array delle asana
@@ -75,8 +76,40 @@ function getAsana(fid) {
   return asana;
 }
 
+// Funzione per ottenere un asana sort for frequency
+function getFrequencyAsana() {
+  // Leggi il file JSON
+  const data = readData();
+
+  // Ordina l'array in base alla frequenza
+  data.asanas.sort((a, b) => a.frequency - b.frequency);
+
+  // Genera un indice casuale tra 0 e la lunghezza dell'array meno 1
+  const randomIndex = Math.floor(Math.random() * 25);
+
+  putFrequencyAsana(data, randomIndex);
+
+  // Restituisce l'elemento all'indice casuale
+  return data.asanas[randomIndex];
+}
+
 // Funzione per ottenere un asana random
 function getRandomAsana() {
+  // Leggi il file JSON
+  const data = readData();
+
+  // Genera un indice casuale tra 0 e la lunghezza dell'array meno 1
+  const randomIndex = Math.floor(Math.random() * data.asanas.length);
+
+  putFrequencyAsana(data, randomIndex);
+
+  // Restituisce l'elemento all'indice casuale
+  return data.asanas[randomIndex];
+}
+
+// Funzione interna per ottenere un asana random. Non aggiorna la frequenza
+// TODO: come astrarre al meglio il codice?
+function randomAsana() {
   // Leggi il file JSON
   const data = readData();
 
@@ -87,11 +120,21 @@ function getRandomAsana() {
   return data.asanas[randomIndex];
 }
 
+// Funzione per ottenere un asana sort for frequency
+function putFrequencyAsana(data, index) {
+
+  data.asanas[index].frequency = "frequency" in data.asanas[index] ? data.asanas[index].frequency + 1 : 1;
+
+  writeData(data);
+
+  return
+}
+
 function getNameAsana() {
   const names = [];
 
   for (let i = 0; i < 4; i++) {
-    let asana = getRandomAsana();
+    let asana = randomAsana();
     names.push(asana["name"]);
   }
 
@@ -131,5 +174,6 @@ module.exports = {
   registerAsana,
   getAsana,
   getRandomAsana,
+  getFrequencyAsana,
   getNameAsana,
 };
